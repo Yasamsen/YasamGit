@@ -2814,17 +2814,14 @@ checkSession();
 document.getElementById("loginForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const password = document.getElementById("password").value;
+  const password =
+    document.getElementById("password").value;
 
-  if (!password) {
-    alert("Password kosong");
-    return;
-  }
-
-  const button = document.getElementById("loginButton");
+  const button =
+    document.getElementById("loginButton");
 
   button.disabled = true;
-  button.textContent = "⏳ Login...";
+  button.textContent = "⏳ Menghubungkan...";
 
   try {
     const response = await fetch(
@@ -2836,64 +2833,38 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          password: password
+          password
         })
       }
     );
 
-    const data = await response.json();
+    const text = await response.text();
 
-    console.log("LOGIN RESPONSE:", data);
+    alert(
+      "HTTP STATUS: " +
+      response.status +
+      "\n\n" +
+      text
+    );
 
-    if (!response.ok) {
-      alert(
-        "❌ Login gagal\n\n" +
-        (data.error || "Unknown error")
-      );
-      return;
-    }
+    console.log(
+      "STATUS:",
+      response.status
+    );
 
-    if (data.ok) {
-      alert("✅ Login berhasil!");
-
-      // Cek session setelah login
-      const sessionResponse = await fetch(
-        "https://yasam-git-backend.vercel.app/api/session",
-        {
-          method: "GET",
-          credentials: "include"
-        }
-      );
-
-      const session =
-        await sessionResponse.json();
-
-      console.log(
-        "SESSION RESPONSE:",
-        session
-      );
-
-      alert(
-        "Session:\n" +
-        JSON.stringify(
-          session,
-          null,
-          2
-        )
-      );
-    }
+    console.log(
+      "RESPONSE:",
+      text
+    );
 
   } catch (error) {
 
-    console.error(
-      "LOGIN ERROR:",
-      error
-    );
-
     alert(
-      "❌ Tidak bisa terhubung ke backend\n\n" +
+      "FETCH ERROR:\n\n" +
       error.message
     );
+
+    console.error(error);
 
   } finally {
 
