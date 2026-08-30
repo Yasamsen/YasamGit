@@ -2809,5 +2809,24 @@ START
 
 checkSession();
 
-</script></body>
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("loginForm");
+
+  if (!form) {
+    alert("❌ loginForm tidak ditemukan");
+    return;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    alert("✅ FORM LOGIN BERJALAN");
+
+    console.log("YasamGit: login form berjalan");
+  });
+});
+</script>
+</body>
 </html>
