@@ -2811,21 +2811,95 @@ checkSession();
 
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-  if (!form) {
-    alert("❌ loginForm tidak ditemukan");
+  const password = document.getElementById("password").value;
+
+  if (!password) {
+    alert("Password kosong");
     return;
   }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  const button = document.getElementById("loginButton");
 
-    alert("✅ FORM LOGIN BERJALAN");
+  button.disabled = true;
+  button.textContent = "⏳ Login...";
 
-    console.log("YasamGit: login form berjalan");
-  });
+  try {
+    const response = await fetch(
+      "https://yasam-git-backend.vercel.app/api/login",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          password: password
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    console.log("LOGIN RESPONSE:", data);
+
+    if (!response.ok) {
+      alert(
+        "❌ Login gagal\n\n" +
+        (data.error || "Unknown error")
+      );
+      return;
+    }
+
+    if (data.ok) {
+      alert("✅ Login berhasil!");
+
+      // Cek session setelah login
+      const sessionResponse = await fetch(
+        "https://yasam-git-backend.vercel.app/api/session",
+        {
+          method: "GET",
+          credentials: "include"
+        }
+      );
+
+      const session =
+        await sessionResponse.json();
+
+      console.log(
+        "SESSION RESPONSE:",
+        session
+      );
+
+      alert(
+        "Session:\n" +
+        JSON.stringify(
+          session,
+          null,
+          2
+        )
+      );
+    }
+
+  } catch (error) {
+
+    console.error(
+      "LOGIN ERROR:",
+      error
+    );
+
+    alert(
+      "❌ Tidak bisa terhubung ke backend\n\n" +
+      error.message
+    );
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "🔐 Login";
+  }
 });
 </script>
 </body>
