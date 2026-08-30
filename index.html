@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0f14">
-<title>YasamGit V5.2</title>
-
-<style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YasamGit V5.2</title><style>
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
   margin:0;
+  padding:0;
   min-height:100%;
-  background:#0b0f14;
-  color:#e8edf3;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0f1117;
+  color:#fff;
 }
 
-button,input,textarea,select{
+button,input,textarea{
   font:inherit;
 }
 
@@ -34,17 +30,99 @@ button{
 
 .app{
   min-height:100vh;
-  display:flex;
-  flex-direction:column;
+  width:100%;
 }
 
-header{
+/* LOGIN */
+
+.login-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#171a23;
+  border:1px solid #292e3b;
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.logo{
+  text-align:center;
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#8f96a8;
+  margin-bottom:28px;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  color:#cbd0dc;
+  font-size:14px;
+}
+
+input,textarea{
+  width:100%;
+  border:1px solid #303644;
+  background:#0f1219;
+  color:#fff;
+  border-radius:12px;
+  padding:13px 14px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#6c7cff;
+}
+
+.login-btn{
+  width:100%;
+  margin-top:16px;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  background:#5865f2;
+  color:#fff;
+  font-weight:700;
+}
+
+.login-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.error{
+  margin-top:14px;
+  background:#3a1820;
+  border:1px solid #6e2634;
+  color:#ff9aaa;
+  padding:11px;
+  border-radius:10px;
+  font-size:14px;
+}
+
+/* HEADER */
+
+.header{
   position:sticky;
   top:0;
-  z-index:50;
-  background:#0f141b;
-  border-bottom:1px solid #202832;
-  padding:12px 14px;
+  z-index:20;
+  background:#141720;
+  border-bottom:1px solid #292e3b;
+  padding:12px 16px;
 }
 
 .header-inner{
@@ -53,250 +131,134 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
+  gap:12px;
 }
 
-.logo{
+.brand{
   font-size:20px;
   font-weight:800;
 }
 
-.logo small{
-  color:#8d99a8;
-  font-size:11px;
-  font-weight:500;
+.user{
+  color:#9ba3b5;
+  font-size:13px;
 }
 
-.user-area{
-  display:flex;
-  align-items:center;
-  gap:8px;
+.logout{
+  border:1px solid #3a4050;
+  background:#1b1f29;
+  color:#fff;
+  padding:9px 12px;
+  border-radius:10px;
 }
 
-.avatar{
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  background:#202832;
-  display:grid;
-  place-items:center;
-  font-size:14px;
-}
+/* MAIN */
 
-main{
-  width:100%;
+.main{
   max-width:1200px;
   margin:auto;
-  padding:14px;
-  padding-bottom:70px;
-}
-
-.card{
-  background:#11171e;
-  border:1px solid #202832;
-  border-radius:14px;
-  padding:14px;
-  margin-bottom:12px;
-}
-
-.login-wrap{
-  width:min(420px,calc(100% - 28px));
-  margin:auto;
-  padding-top:8vh;
-}
-
-.login-logo{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.login-logo h1{
-  margin:0 0 5px;
-  font-size:30px;
-}
-
-.login-logo p{
-  margin:0;
-  color:#8d99a8;
-}
-
-label{
-  display:block;
-  margin-bottom:7px;
-  font-size:13px;
-  color:#aeb8c4;
-}
-
-input,textarea,select{
-  width:100%;
-  border:1px solid #29333e;
-  background:#0b1016;
-  color:#edf2f7;
-  border-radius:10px;
-  padding:11px 12px;
-  outline:none;
-}
-
-input:focus,textarea:focus,select:focus{
-  border-color:#617080;
-}
-
-textarea{
-  min-height:180px;
-  resize:vertical;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-}
-
-.btn{
-  border:1px solid #29333e;
-  background:#182029;
-  color:#edf2f7;
-  border-radius:9px;
-  padding:9px 12px;
-  min-height:40px;
-  transition:.15s;
-}
-
-.btn:active{
-  transform:scale(.97);
-}
-
-.btn.primary{
-  background:#e8edf3;
-  color:#0b0f14;
-  border-color:#e8edf3;
-  font-weight:700;
-}
-
-.btn.danger{
-  background:#29181c;
-  border-color:#54262e;
-}
-
-.btn.small{
-  min-height:34px;
-  padding:7px 9px;
-  font-size:13px;
-}
-
-button:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.row{
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-
-.wrap{
-  flex-wrap:wrap;
-}
-
-.grow{
-  flex:1;
+  padding:20px 16px 100px;
 }
 
 .toolbar{
   display:flex;
-  gap:8px;
   flex-wrap:wrap;
-  margin-bottom:12px;
+  gap:10px;
+  margin-bottom:20px;
 }
 
-.toolbar input{
-  min-width:180px;
-  flex:1;
+.action{
+  border:1px solid #303644;
+  background:#191d27;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+}
+
+.action.primary{
+  background:#5865f2;
+  border-color:#5865f2;
 }
 
 .repo-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:10px;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:14px;
 }
 
 .repo{
-  border:1px solid #202832;
-  background:#0f141b;
-  border-radius:12px;
-  padding:13px;
-  cursor:pointer;
-}
-
-.repo:hover{
-  border-color:#44515e;
+  background:#171a23;
+  border:1px solid #292e3b;
+  border-radius:15px;
+  padding:17px;
 }
 
 .repo-name{
-  font-weight:750;
+  font-weight:700;
+  margin-bottom:8px;
   word-break:break-word;
 }
 
 .repo-desc{
-  color:#8995a3;
+  color:#8f96a8;
   font-size:13px;
-  margin-top:6px;
-  min-height:34px;
+  min-height:35px;
 }
 
-.repo-meta{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-  color:#8995a3;
-  font-size:12px;
+.repo button{
+  margin-top:14px;
+  width:100%;
 }
 
-.breadcrumb{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  flex-wrap:wrap;
-  color:#aeb8c4;
-  font-size:13px;
-  margin-bottom:12px;
-}
+/* FILE VIEW */
 
-.crumb{
-  border:0;
-  background:none;
-  color:#dce4ec;
-  padding:3px;
-}
-
-.file-list{
-  border:1px solid #202832;
-  border-radius:12px;
+.panel{
+  background:#171a23;
+  border:1px solid #292e3b;
+  border-radius:16px;
   overflow:hidden;
 }
 
-.file{
+.panel-header{
+  padding:14px 16px;
+  border-bottom:1px solid #292e3b;
   display:flex;
   align-items:center;
+  justify-content:space-between;
   gap:10px;
-  padding:11px;
-  border-bottom:1px solid #202832;
-  min-height:54px;
+  flex-wrap:wrap;
 }
 
-.file:last-child{
+.breadcrumb{
+  color:#b7bdca;
+  word-break:break-all;
+}
+
+.file-list{
+  width:100%;
+}
+
+.file-row{
+  min-height:56px;
+  padding:10px 14px;
+  border-bottom:1px solid #252a35;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.file-row:last-child{
   border-bottom:0;
-}
-
-.file:hover{
-  background:#151c24;
 }
 
 .file-icon{
   width:30px;
   text-align:center;
-  flex:none;
 }
 
-.file-main{
-  min-width:0;
+.file-info{
   flex:1;
+  min-width:0;
 }
 
 .file-name{
@@ -305,403 +267,531 @@ button:disabled{
   white-space:nowrap;
 }
 
-.file-size{
-  color:#7f8b99;
-  font-size:11px;
-  margin-top:2px;
+.file-type{
+  color:#7f8799;
+  font-size:12px;
+  margin-top:3px;
 }
 
 .file-actions{
   display:flex;
-  gap:5px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
+  gap:6px;
 }
 
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:#788594;
+.small-btn{
+  border:1px solid #303644;
+  background:#1b1f29;
+  color:#fff;
+  border-radius:8px;
+  padding:7px 9px;
 }
 
-.status{
-  position:fixed;
-  left:50%;
-  bottom:18px;
-  transform:translateX(-50%);
-  z-index:100;
-  background:#171e27;
-  border:1px solid #34404c;
-  border-radius:999px;
-  padding:9px 15px;
-  box-shadow:0 8px 30px #0008;
-  max-width:calc(100% - 30px);
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
+/* MODAL */
 
 .modal{
   position:fixed;
   inset:0;
-  z-index:200;
-  background:#000b;
-  display:grid;
-  place-items:center;
-  padding:15px;
+  z-index:100;
+  background:rgba(0,0,0,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
 }
 
 .modal-box{
-  width:min(800px,100%);
+  width:100%;
+  max-width:600px;
   max-height:90vh;
   overflow:auto;
-  background:#11171e;
-  border:1px solid #29333e;
-  border-radius:15px;
-  padding:15px;
+  background:#171a23;
+  border:1px solid #303644;
+  border-radius:18px;
+  padding:20px;
 }
 
 .modal-title{
-  font-size:18px;
-  font-weight:750;
-  margin-bottom:13px;
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:18px;
 }
 
-.preview img,
-.preview video{
+.form-group{
+  margin-bottom:15px;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:20px;
+}
+
+/* PREVIEW */
+
+.preview{
   max-width:100%;
   max-height:65vh;
   display:block;
   margin:auto;
-  border-radius:9px;
+  border-radius:10px;
 }
 
-.preview pre{
+video.preview{
+  width:100%;
+}
+
+pre.code{
+  background:#0d1016;
+  border:1px solid #292e3b;
+  border-radius:10px;
+  padding:14px;
+  overflow:auto;
   white-space:pre-wrap;
   word-break:break-word;
-  background:#0a0e13;
-  padding:12px;
-  border-radius:9px;
-  overflow:auto;
   max-height:65vh;
 }
 
-.progress{
-  height:5px;
-  background:#202832;
-  border-radius:5px;
-  overflow:hidden;
-  margin-top:10px;
+/* LOADING */
+
+.loading{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:rgba(8,10,14,.72);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.progress i{
-  display:block;
-  height:100%;
-  width:0;
-  background:#e8edf3;
-  transition:width .15s;
+.loading-box{
+  background:#171a23;
+  border:1px solid #303644;
+  padding:20px 24px;
+  border-radius:15px;
+  text-align:center;
 }
 
-.notice{
-  padding:10px;
-  border:1px solid #29333e;
-  border-radius:9px;
-  color:#9da9b7;
-  font-size:13px;
+.spinner{
+  width:28px;
+  height:28px;
+  border:3px solid #343a48;
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:auto auto 12px;
 }
 
-@media(max-width:650px){
-  header{
-    padding:10px;
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .login-box{
+    padding:22px;
   }
 
-  main{
-    padding:10px;
-    padding-bottom:80px;
+  .main{
+    padding:14px 10px 80px;
+  }
+
+  .toolbar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .action{
+    width:100%;
   }
 
   .repo-grid{
     grid-template-columns:1fr;
   }
 
-  .file{
+  .file-row{
     align-items:flex-start;
   }
 
   .file-actions{
-    max-width:125px;
+    flex-wrap:wrap;
   }
 
-  .file-actions .btn{
-    font-size:11px;
-    padding:6px;
-    min-height:31px;
+  .file-actions .small-btn{
+    font-size:0;
   }
 
-  .toolbar>*{
-    width:100%;
-  }
-
-  .toolbar .btn{
-    width:auto;
+  .file-actions .small-btn::after{
+    content:"...";
+    font-size:14px;
   }
 
   .header-inner{
-    align-items:flex-start;
-  }
-
-  .user-area span{
-    display:none;
+    flex-wrap:wrap;
   }
 }
-</style>
-</head>
-
-<body>
-
-<div id="app" class="app">
-
-<header id="header" class="hidden">
-  <div class="header-inner">
-    <div class="logo">
-      YasamGit
-      <small>V5.2</small>
-    </div>
-
-    <div class="user-area">
-      <div class="avatar" id="avatar">?</div>
-      <span id="username">...</span>
-      <button class="btn small" onclick="logout()">Logout</button>
-    </div>
+</style></head><body><div id="loading" class="loading hidden">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <div id="loadingText">Memproses...</div>
   </div>
-</header>
-
-<!-- LOGIN -->
-
-<section id="loginPage">
-
-  <div class="login-wrap">
-
-    <div class="login-logo">
-      <h1>🔐 YasamGit</h1>
-      <p>GitHub Manager V5.2</p>
-    </div>
-
-    <div class="card">
-
-      <label>Password Admin</label>
-
-      <input
-        id="password"
-        type="password"
-        placeholder="Masukkan password"
-        autocomplete="current-password"
-        onkeydown="if(event.key==='Enter')login()"
-      >
-
-      <div style="height:10px"></div>
-
-      <button
-        id="loginBtn"
-        class="btn primary"
-        style="width:100%"
-        onclick="login()"
-      >
-        🔐 Login
-      </button>
-
-      <div style="height:12px"></div>
-
-      <div class="notice">
-        Password divalidasi oleh backend Vercel.
-        GitHub Token tidak disimpan di halaman ini.
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- MAIN -->
-
-<main id="mainPage" class="hidden">
-
-  <div class="card">
-
-    <div class="row wrap">
-
-      <div class="grow">
-        <b id="pageTitle">Repository</b>
-        <div
-          id="pageSub"
-          style="color:#7f8b99;font-size:12px;margin-top:3px"
-        >
-          Repository GitHub kamu
-        </div>
-      </div>
-
-      <button
-        class="btn small"
-        onclick="showRepos()"
-      >
-        📁 Repo
-      </button>
-
-      <button
-        class="btn small"
-        onclick="createRepository()"
-      >
-        ➕ Repo
-      </button>
-
-      <button
-        class="btn small"
-        onclick="loadCurrent()"
-      >
-        🔄
-      </button>
-
-    </div>
-
-  </div>
-
-  <!-- REPOSITORIES -->
-
-  <section id="repoSection">
-
-    <div class="toolbar">
-
-      <input
-        id="repoSearch"
-        placeholder="🔍 Cari repository..."
-        oninput="filterRepos()"
-      >
-
-    </div>
-
-    <div id="repoGrid" class="repo-grid"></div>
-
-  </section>
-
-  <!-- FILES -->
-
-  <section id="fileSection" class="hidden">
-
-    <div class="breadcrumb" id="breadcrumb"></div>
-
-    <div class="toolbar">
-
-      <input
-        id="fileSearch"
-        placeholder="🔍 Cari file..."
-        oninput="renderFiles()"
-      >
-
-      <button
-        class="btn"
-        onclick="uploadPicker()"
-      >
-        📤 Upload
-      </button>
-
-      <button
-        class="btn"
-        onclick="createFolder()"
-      >
-        📁 Folder
-      </button>
-
-      <input
-        id="uploadInput"
-        type="file"
-        multiple
-        hidden
-        onchange="handleUpload(this.files)"
-      >
-
-    </div>
-
-    <div id="fileList" class="file-list"></div>
-
-  </section>
-
-</main>
-
-<div id="status" class="status hidden">...</div>
-
-<!-- MODAL -->
-
-<div id="modal" class="modal hidden">
-  <div class="modal-box">
-    <div class="row">
-      <div class="modal-title grow" id="modalTitle">...</div>
-      <button class="btn small" onclick="closeModal()">✕</button>
-    </div>
-
-    <div id="modalBody"></div>
-  </div>
+</div><!-- LOGIN --><section id="loginPage" class="login-page">  <div class="login-box"><div class="logo">
+  🔐 YasamGit V5.2
 </div>
 
-<script>
+<div class="subtitle">
+  GitHub Repository Manager
+</div>
 
-/* =========================================================
-   CONFIG
-========================================================= */
+<form id="loginForm">
 
-const API_URL =
+  <label>Password Admin</label>
+
+  <input
+    id="password"
+    type="password"
+    placeholder="Masukkan password"
+    autocomplete="current-password"
+    required
+  >
+
+  <button
+    id="loginButton"
+    class="login-btn"
+    type="submit"
+  >
+    🔐 Login
+  </button>
+
+</form>
+
+<div
+  id="loginError"
+  class="error hidden"
+></div>
+
+  </div></section><!-- APP --><section id="appPage" class="app hidden">  <header class="header"><div class="header-inner">
+
+  <div>
+    <div class="brand">
+      🟣 YasamGit V5.2
+    </div>
+
+    <div
+      id="username"
+      class="user"
+    >
+      -
+    </div>
+  </div>
+
+  <button
+    id="logoutButton"
+    class="logout"
+  >
+    🚪 Logout
+  </button>
+
+</div>
+
+  </header>  <main class="main"><div class="toolbar">
+
+  <button
+    id="refreshRepos"
+    class="action"
+  >
+    🔄 Refresh
+  </button>
+
+  <button
+    id="addRepo"
+    class="action primary"
+  >
+    ➕ Add Repository
+  </button>
+
+  <button
+    id="searchRepo"
+    class="action"
+  >
+    🔍 Search
+  </button>
+
+</div>
+
+<div id="repoView">
+
+  <div class="panel">
+
+    <div class="panel-header">
+      <strong>📁 Repository</strong>
+      <span id="repoCount">0</span>
+    </div>
+
+    <div
+      id="repoList"
+      class="repo-grid"
+      style="padding:14px"
+    ></div>
+
+  </div>
+
+</div>
+
+<div
+  id="fileView"
+  class="hidden"
+>
+
+  <div class="toolbar">
+
+    <button
+      id="backRepos"
+      class="action"
+    >
+      ← Repository
+    </button>
+
+    <button
+      id="uploadButton"
+      class="action primary"
+    >
+      📤 Upload
+    </button>
+
+    <button
+      id="folderButton"
+      class="action"
+    >
+      📁 Folder
+    </button>
+
+    <button
+      id="searchFileButton"
+      class="action"
+    >
+      🔍 Search
+    </button>
+
+  </div>
+
+  <div class="panel">
+
+    <div class="panel-header">
+
+      <div
+        id="breadcrumb"
+        class="breadcrumb"
+      ></div>
+
+      <select
+        id="branchSelect"
+        class="action"
+      ></select>
+
+    </div>
+
+    <div
+      id="fileList"
+      class="file-list"
+    ></div>
+
+  </div>
+
+</div>
+
+  </main></section><!-- MODAL --><div
+  id="modal"
+  class="modal hidden"
+>
+  <div class="modal-box"><div
+  id="modalTitle"
+  class="modal-title"
+></div>
+
+<div id="modalContent"></div>
+
+<div class="modal-actions">
+
+  <button
+    id="modalCancel"
+    class="action"
+  >
+    Batal
+  </button>
+
+  <button
+    id="modalSubmit"
+    class="action primary"
+  >
+    Simpan
+  </button>
+
+</div>
+
+  </div>
+</div><script>
+"use strict";
+
+/*
+ * =====================================================
+ * YasamGit V5.2 FRONTEND
+ * =====================================================
+ */
+
+const API_BASE =
   "https://yasam-git-backend.vercel.app";
 
-/* =========================================================
-   STATE
-========================================================= */
-
 let currentUser = null;
-let repositories = [];
 let currentRepo = null;
 let currentPath = "";
-let currentFiles = [];
-let busy = false;
+let currentBranch = "";
+let currentItems = [];
 
 
-/* =========================================================
-   API
-========================================================= */
+/* =========================
+   DOM
+========================= */
 
-async function api(path, options = {}) {
+const $ = id =>
+  document.getElementById(id);
 
-  const response = await fetch(
-    API_URL + path,
-    {
-      credentials:"include",
-      ...options,
-      headers:{
-        "Content-Type":"application/json",
-        ...(options.headers || {})
-      }
-    }
+const loginPage =
+  $("loginPage");
+
+const appPage =
+  $("appPage");
+
+const loading =
+  $("loading");
+
+const loadingText =
+  $("loadingText");
+
+const loginForm =
+  $("loginForm");
+
+const loginButton =
+  $("loginButton");
+
+const loginError =
+  $("loginError");
+
+const repoView =
+  $("repoView");
+
+const fileView =
+  $("fileView");
+
+const repoList =
+  $("repoList");
+
+const repoCount =
+  $("repoCount");
+
+const username =
+  $("username");
+
+const fileList =
+  $("fileList");
+
+const breadcrumb =
+  $("breadcrumb");
+
+const branchSelect =
+  $("branchSelect");
+
+const modal =
+  $("modal");
+
+const modalTitle =
+  $("modalTitle");
+
+const modalContent =
+  $("modalContent");
+
+const modalCancel =
+  $("modalCancel");
+
+const modalSubmit =
+  $("modalSubmit");
+
+
+/* =========================
+   LOADING
+========================= */
+
+function showLoading(text = "Memproses...") {
+
+  loadingText.textContent =
+    text;
+
+  loading.classList.remove(
+    "hidden"
   );
+}
+
+function hideLoading() {
+
+  loading.classList.add(
+    "hidden"
+  );
+}
+
+
+/* =========================
+   API
+========================= */
+
+async function api(
+  path,
+  options = {}
+) {
+
+  const response =
+    await fetch(
+      API_BASE + path,
+      {
+        credentials:
+          "include",
+
+        ...options,
+
+        headers:{
+          ...(options.body
+            ? {
+                "Content-Type":
+                  "application/json"
+              }
+            : {}),
+
+          ...(options.headers || {})
+        }
+      }
+    );
 
   let data;
 
+  const text =
+    await response.text();
+
   try {
-    data = await response.json();
+    data =
+      text
+        ? JSON.parse(text)
+        : {};
   } catch {
     data = {
-      ok:false,
-      error:"Response server tidak valid."
+      message:text
     };
   }
 
-  if (
-    response.status === 401 &&
-    path !== "/api/login"
-  ) {
-    logoutLocal();
-    throw new Error("Session habis.");
-  }
-
   if (!response.ok) {
+
     throw new Error(
       data.error ||
       data.message ||
@@ -713,325 +803,248 @@ async function api(path, options = {}) {
 }
 
 
-/* =========================================================
-   STATUS
-========================================================= */
-
-let statusTimer;
-
-function setStatus(message, loading = false){
-
-  const el =
-    document.getElementById("status");
-
-  el.classList.remove("hidden");
-
-  el.textContent =
-    loading
-      ? `... ${message}`
-      : message;
-
-  clearTimeout(statusTimer);
-
-  if(!loading){
-    statusTimer =
-      setTimeout(
-        ()=>el.classList.add("hidden"),
-        2500
-      );
-  }
-}
-
-function clearStatus(){
-  document
-    .getElementById("status")
-    .classList.add("hidden");
-}
-
-
-/* =========================================================
+/* =========================
    LOGIN
-========================================================= */
+========================= */
 
-async function login(){
+loginForm.addEventListener(
+  "submit",
+  async event => {
 
-  if(busy) return;
+    event.preventDefault();
 
-  const password =
-    document
-      .getElementById("password")
-      .value;
-
-  if(!password){
-    setStatus("Password wajib diisi.");
-    return;
-  }
-
-  busy = true;
-
-  const btn =
-    document.getElementById("loginBtn");
-
-  btn.disabled = true;
-  btn.textContent = "...";
-
-  setStatus("Login", true);
-
-  try{
-
-    await api(
-      "/api/login",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          password
-        })
-      }
+    loginError.classList.add(
+      "hidden"
     );
 
-    document
-      .getElementById("password")
-      .value = "";
+    const password =
+      $("password").value;
 
-    await enterApp();
+    if (!password) {
+      return;
+    }
 
-  }catch(error){
+    loginButton.disabled =
+      true;
 
-    setStatus(
-      error.message || "Login gagal."
+    loginButton.textContent =
+      "...";
+
+    showLoading(
+      "Login..."
     );
 
-  }finally{
+    try {
 
-    busy = false;
+      await api(
+        "/api/login",
+        {
+          method:"POST",
 
-    btn.disabled = false;
-    btn.textContent = "🔐 Login";
+          body:
+            JSON.stringify({
+              password
+            })
+        }
+      );
 
+      $("password").value =
+        "";
+
+      await checkSession();
+
+    } catch(error) {
+
+      loginError.textContent =
+        error.message;
+
+      loginError.classList.remove(
+        "hidden"
+      );
+
+    } finally {
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "🔐 Login";
+
+      hideLoading();
+    }
   }
-}
+);
 
 
-/* =========================================================
+/* =========================
    SESSION
-========================================================= */
+========================= */
 
-async function checkSession(){
+async function checkSession() {
 
-  try{
+  try {
 
-    const data =
+    const session =
       await api(
         "/api/session"
       );
 
-    if(data.authenticated){
-      await enterApp();
+    if (
+      session.authenticated
+    ) {
+
+      await showApp();
+
+    } else {
+
+      showLogin();
     }
 
-  }catch{
+  } catch {
 
     showLogin();
-
   }
 }
 
-async function enterApp(){
 
-  document
-    .getElementById("loginPage")
-    .classList.add("hidden");
+function showLogin() {
 
-  document
-    .getElementById("mainPage")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("header")
-    .classList.remove("hidden");
-
-  try{
-
-    await loadUser();
-    await loadRepos();
-
-  }catch(error){
-
-    setStatus(error.message);
-
-  }
-}
-
-function showLogin(){
-
-  document
-    .getElementById("loginPage")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("mainPage")
-    .classList.add("hidden");
-
-  document
-    .getElementById("header")
-    .classList.add("hidden");
-
-}
-
-function logoutLocal(){
-
-  currentUser = null;
-  repositories = [];
-  currentRepo = null;
-  currentFiles = [];
-
-  showLogin();
-}
-
-async function logout(){
-
-  try{
-
-    await api(
-      "/api/logout",
-      {
-        method:"POST"
-      }
-    );
-
-  }catch{}
-
-  logoutLocal();
-
-  setStatus("Logout berhasil.");
-
-}
-
-
-/* =========================================================
-   USER
-========================================================= */
-
-async function loadUser(){
-
-  const data =
-    await api(
-      "/api/github/user"
-    );
-
-  currentUser = data;
-
-  document
-    .getElementById("username")
-    .textContent =
-      data.login || "...";
-
-  document
-    .getElementById("avatar")
-    .textContent =
-      (data.login || "?")
-      .charAt(0)
-      .toUpperCase();
-
-}
-
-
-/* =========================================================
-   REPOSITORIES
-========================================================= */
-
-async function loadRepos(){
-
-  setStatus(
-    "Memuat repository",
-    true
+  loginPage.classList.remove(
+    "hidden"
   );
 
-  try{
+  appPage.classList.add(
+    "hidden"
+  );
+}
 
-    repositories =
+
+async function showApp() {
+
+  loginPage.classList.add(
+    "hidden"
+  );
+
+  appPage.classList.remove(
+    "hidden"
+  );
+
+  showLoading(
+    "Mengambil akun GitHub..."
+  );
+
+  try {
+
+    const user =
       await api(
-        "/api/github/repos?per_page=100"
+        "/api/github/user"
       );
 
-    if(!Array.isArray(repositories)){
-      repositories = [];
-    }
+    currentUser =
+      user;
 
-    renderRepos();
+    username.textContent =
+      `👤 ${user.login}`;
 
-  }finally{
+    await loadRepos();
 
-    clearStatus();
+  } catch(error) {
 
+    alert(
+      "Gagal mengambil akun GitHub: " +
+      error.message
+    );
+
+    await logout();
+
+  } finally {
+
+    hideLoading();
   }
 }
 
-function renderRepos(){
 
-  const grid =
-    document.getElementById(
-      "repoGrid"
+/* =========================
+   REPOSITORIES
+========================= */
+
+async function loadRepos() {
+
+  showLoading(
+    "Memuat repository..."
+  );
+
+  try {
+
+    const repos =
+      await api(
+        "/api/github/repos"
+      );
+
+    renderRepos(
+      Array.isArray(repos)
+        ? repos
+        : []
     );
 
-  const query =
-    document
-      .getElementById("repoSearch")
-      .value
-      .trim()
-      .toLowerCase();
+  } catch(error) {
 
-  const list =
-    repositories.filter(repo =>
-      !query ||
-      repo.name
-        .toLowerCase()
-        .includes(query) ||
-      String(repo.description || "")
-        .toLowerCase()
-        .includes(query)
-    );
+    repoList.innerHTML =
+      `<div style="padding:20px;color:#ff8c9b">
+        ${escapeHtml(
+          error.message
+        )}
+      </div>`;
 
-  if(!list.length){
+  } finally {
 
-    grid.innerHTML =
-      `<div class="empty">
-        Tidak ada repository.
+    hideLoading();
+  }
+}
+
+
+function renderRepos(repos) {
+
+  repoCount.textContent =
+    repos.length;
+
+  if (!repos.length) {
+
+    repoList.innerHTML =
+      `<div style="padding:20px;color:#8f96a8">
+        Belum ada repository.
       </div>`;
 
     return;
   }
 
-  grid.innerHTML =
-    list.map(repo => {
-
-      const visibility =
-        repo.private
-          ? "🔒 Private"
-          : "🌐 Public";
+  repoList.innerHTML =
+    repos.map(repo => {
 
       return `
-        <div
-          class="repo"
-          onclick="openRepo('${escapeAttr(repo.owner.login)}','${escapeAttr(repo.name)}')"
-        >
+        <div class="repo">
 
           <div class="repo-name">
-            📁 ${escapeHtml(repo.name)}
+            📁 ${escapeHtml(
+              repo.name
+            )}
           </div>
 
           <div class="repo-desc">
             ${escapeHtml(
               repo.description ||
-              "Tidak ada deskripsi."
+              "Tidak ada deskripsi"
             )}
           </div>
 
-          <div class="repo-meta">
-            <span>${visibility}</span>
-            <span>⭐ ${repo.stargazers_count || 0}</span>
-            <span>🍴 ${repo.forks_count || 0}</span>
-          </div>
+          <button
+            class="action primary"
+            onclick="openRepo('${escapeAttr(
+              repo.name
+            )}')"
+          >
+            📂 Buka Repository
+          </button>
 
         </div>
       `;
@@ -1039,1237 +1052,1762 @@ function renderRepos(){
     }).join("");
 }
 
-function filterRepos(){
-  renderRepos();
-}
 
+window.openRepo =
+  async function(repoName) {
 
-/* =========================================================
-   OPEN REPOSITORY
-========================================================= */
+    currentRepo =
+      repoName;
 
-async function openRepo(owner, repo){
+    currentPath =
+      "";
 
-  currentRepo = {
-    owner,
-    repo
-  };
-
-  currentPath = "";
-
-  document
-    .getElementById("repoSection")
-    .classList.add("hidden");
-
-  document
-    .getElementById("fileSection")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("pageTitle")
-    .textContent =
-      `${owner}/${repo}`;
-
-  document
-    .getElementById("pageSub")
-    .textContent =
-      "File & folder";
-
-  await loadFiles();
-
-}
-
-function showRepos(){
-
-  currentRepo = null;
-
-  document
-    .getElementById("fileSection")
-    .classList.add("hidden");
-
-  document
-    .getElementById("repoSection")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("pageTitle")
-    .textContent =
-      "Repository";
-
-  document
-    .getElementById("pageSub")
-    .textContent =
-      "Repository GitHub kamu";
-
-  renderRepos();
-
-}
-
-
-/* =========================================================
-   FILES
-========================================================= */
-
-async function loadFiles(){
-
-  if(!currentRepo) return;
-
-  setStatus(
-    "Memuat file",
-    true
-  );
-
-  try{
-
-    const params =
-      new URLSearchParams({
-        owner:currentRepo.owner,
-        repo:currentRepo.repo,
-        path:currentPath
-      });
-
-    const data =
-      await api(
-        "/api/github/contents?" +
-        params.toString()
-      );
-
-    currentFiles =
-      Array.isArray(data)
-        ? data
-        : [data];
-
-    renderBreadcrumb();
-    renderFiles();
-
-  }catch(error){
-
-    setStatus(
-      error.message
+    repoView.classList.add(
+      "hidden"
     );
 
-  }finally{
+    fileView.classList.remove(
+      "hidden"
+    );
 
-    clearStatus();
+    await loadBranches();
 
+    await loadContents();
+  };
+
+
+/* =========================
+   BRANCHES
+========================= */
+
+async function loadBranches() {
+
+  showLoading(
+    "Memuat branch..."
+  );
+
+  try {
+
+    const branches =
+      await api(
+        `/api/github/branches?owner=${encodeURIComponent(
+          currentUser.login
+        )}&repo=${encodeURIComponent(
+          currentRepo
+        )}`
+      );
+
+    branchSelect.innerHTML =
+      "";
+
+    for (
+      const branch of branches
+    ) {
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        branch.name;
+
+      option.textContent =
+        branch.name;
+
+      branchSelect.appendChild(
+        option
+      );
+    }
+
+    if (branches.length) {
+
+      currentBranch =
+        branches[0].name;
+
+      branchSelect.value =
+        currentBranch;
+    }
+
+  } catch(error) {
+
+    branchSelect.innerHTML =
+      "<option>main</option>";
+
+    currentBranch =
+      "main";
+
+  } finally {
+
+    hideLoading();
   }
 }
 
-function renderBreadcrumb(){
 
-  const el =
-    document.getElementById(
-      "breadcrumb"
+branchSelect.addEventListener(
+  "change",
+  async () => {
+
+    currentBranch =
+      branchSelect.value;
+
+    await loadContents();
+  }
+);
+
+
+/* =========================
+   FILES
+========================= */
+
+async function loadContents() {
+
+  showLoading(
+    "Memuat file..."
+  );
+
+  try {
+
+    const url =
+      `/api/github/contents` +
+      `?owner=${encodeURIComponent(
+        currentUser.login
+      )}` +
+      `&repo=${encodeURIComponent(
+        currentRepo
+      )}` +
+      `&path=${encodeURIComponent(
+        currentPath
+      )}` +
+      `&ref=${encodeURIComponent(
+        currentBranch
+      )}`;
+
+    const items =
+      await api(url);
+
+    currentItems =
+      Array.isArray(items)
+        ? items
+        : [items];
+
+    renderFiles(
+      currentItems
     );
 
-  const parts =
-    currentPath
-      ? currentPath
-        .split("/")
-        .filter(Boolean)
-      : [];
+    breadcrumb.textContent =
+      currentPath
+        ? `📁 ${currentRepo} / ${currentPath}`
+        : `📁 ${currentRepo}`;
 
-  let html =
-    `<button
-      class="crumb"
-      onclick="goPath('')"
-    >🏠</button>`;
+  } catch(error) {
 
-  let path = "";
+    fileList.innerHTML =
+      `<div style="padding:20px;color:#ff8c9b">
+        ${escapeHtml(
+          error.message
+        )}
+      </div>`;
 
-  parts.forEach((part,index)=>{
+  } finally {
 
-    path +=
-      (path ? "/" : "") +
-      part;
-
-    html += `
-      <span>/</span>
-      <button
-        class="crumb"
-        onclick="goPath('${escapeAttr(path)}')"
-      >
-        ${escapeHtml(part)}
-      </button>
-    `;
-
-  });
-
-  el.innerHTML = html;
+    hideLoading();
+  }
 }
 
-function renderFiles(){
 
-  const container =
-    document.getElementById(
-      "fileList"
-    );
+function renderFiles(items) {
 
-  const query =
-    document
-      .getElementById("fileSearch")
-      .value
-      .trim()
-      .toLowerCase();
+  if (!items.length) {
 
-  const files =
-    currentFiles.filter(file =>
-      !query ||
-      file.name
-        .toLowerCase()
-        .includes(query)
-    );
-
-  if(!files.length){
-
-    container.innerHTML =
-      `<div class="empty">
-        Folder kosong.
+    fileList.innerHTML =
+      `<div style="padding:25px;text-align:center;color:#8f96a8">
+        Folder kosong
       </div>`;
 
     return;
   }
 
-  const folders =
-    files.filter(
-      x => x.type === "dir"
-    );
+  fileList.innerHTML =
+    items.map(
+      (item,index) => {
 
-  const normalFiles =
-    files.filter(
-      x => x.type !== "dir"
-    );
+        const icon =
+          item.type === "dir"
+            ? "📁"
+            : getFileIcon(
+                item.name
+              );
 
-  const sorted =
-    [...folders,...normalFiles];
+        return `
+          <div class="file-row">
 
-  container.innerHTML =
-    sorted.map(file => {
-
-      const isFolder =
-        file.type === "dir";
-
-      const icon =
-        isFolder ? "📁" : getFileIcon(file.name);
-
-      return `
-        <div
-          class="file"
-          data-path="${escapeAttr(file.path)}"
-        >
-
-          <div class="file-icon">
-            ${icon}
-          </div>
-
-          <div
-            class="file-main"
-            onclick="${
-              isFolder
-                ? `goPath('${escapeAttr(file.path)}')`
-                : `previewFile('${escapeAttr(file.path)}','${escapeAttr(file.name)}')`
-            }"
-          >
-
-            <div class="file-name">
-              ${escapeHtml(file.name)}
+            <div class="file-icon">
+              ${icon}
             </div>
 
-            <div class="file-size">
-              ${
-                isFolder
-                  ? "Folder"
-                  : formatBytes(file.size || 0)
-              }
+            <div class="file-info">
+
+              <div class="file-name">
+                ${escapeHtml(
+                  item.name
+                )}
+              </div>
+
+              <div class="file-type">
+                ${item.type}
+              </div>
+
+            </div>
+
+            <div class="file-actions">
+
+              <button
+                class="small-btn"
+                onclick="itemAction(${index})"
+                title="Aksi"
+              >
+                ⋯
+              </button>
+
             </div>
 
           </div>
-
-          <div class="file-actions">
-
-            ${
-              !isFolder
-              ? `
-                <button
-                  class="btn small"
-                  onclick="previewFile('${escapeAttr(file.path)}','${escapeAttr(file.name)}')"
-                >👁️</button>
-
-                <button
-                  class="btn small"
-                  onclick="downloadFile('${escapeAttr(file.download_url || "")}','${escapeAttr(file.name)}')"
-                >⬇️</button>
-
-                <button
-                  class="btn small"
-                  onclick="editFile('${escapeAttr(file.path)}','${escapeAttr(file.name)}')"
-                >✍️</button>
-              `
-              : ""
-            }
-
-            <button
-              class="btn small"
-              onclick="renameItem('${escapeAttr(file.path)}','${escapeAttr(file.name)}')"
-            >✏️</button>
-
-            <button
-              class="btn small danger"
-              onclick="deleteItem('${escapeAttr(file.path)}','${escapeAttr(file.name)}','${escapeAttr(file.sha)}')"
-            >🗑️</button>
-
-          </div>
-
-        </div>
-      `;
-
-    }).join("");
-}
-
-async function goPath(path){
-
-  currentPath = path;
-
-  await loadFiles();
-
+        `;
+      }
+    ).join("");
 }
 
 
-/* =========================================================
-   UPLOAD
-========================================================= */
+window.itemAction =
+  async function(index) {
 
-function uploadPicker(){
+    const item =
+      currentItems[index];
 
-  document
-    .getElementById("uploadInput")
-    .click();
+    if (!item) return;
 
+    if (
+      item.type === "dir"
+    ) {
+
+      currentPath =
+        joinPath(
+          currentPath,
+          item.name
+        );
+
+      await loadContents();
+
+      return;
+    }
+
+    openFileActions(
+      item
+    );
+  };
+
+
+/* =========================
+   FILE ACTIONS
+========================= */
+
+function openFileActions(
+  item
+) {
+
+  modalTitle.textContent =
+    `📄 ${item.name}`;
+
+  modalContent.innerHTML = `
+    <div style="
+      display:grid;
+      gap:10px;
+    ">
+
+      <button
+        class="action"
+        id="previewAction"
+      >
+        👁️ Preview
+      </button>
+
+      <button
+        class="action"
+        id="editAction"
+      >
+        ✍️ Edit
+      </button>
+
+      <button
+        class="action"
+        id="renameAction"
+      >
+        ✏️ Rename
+      </button>
+
+      <button
+        class="action"
+        id="downloadAction"
+      >
+        ⬇️ Download
+      </button>
+
+      <button
+        class="action"
+        id="deleteAction"
+      >
+        🗑️ Delete
+      </button>
+
+    </div>
+  `;
+
+  modalSubmit.classList.add(
+    "hidden"
+  );
+
+  modal.classList.remove(
+    "hidden"
+  );
+
+  $("previewAction")
+    .onclick =
+      () => previewFile(item);
+
+  $("editAction")
+    .onclick =
+      () => editFile(item);
+
+  $("renameAction")
+    .onclick =
+      () => renameFile(item);
+
+  $("downloadAction")
+    .onclick =
+      () => downloadFile(item);
+
+  $("deleteAction")
+    .onclick =
+      () => deleteFile(item);
 }
 
-async function handleUpload(files){
 
-  if(!files || !files.length) return;
+/* =========================
+   PREVIEW
+========================= */
 
-  if(!currentRepo) return;
+async function previewFile(
+  item
+) {
 
-  for(
-    const file of Array.from(files)
-  ){
+  closeModal();
 
-    try{
+  showLoading(
+    "Mengambil file..."
+  );
 
-      setStatus(
-        `Upload ${file.name}`,
-        true
+  try {
+
+    const data =
+      await api(
+        `/api/github/file` +
+        `?owner=${encodeURIComponent(
+          currentUser.login
+        )}` +
+        `&repo=${encodeURIComponent(
+          currentRepo
+        )}` +
+        `&path=${encodeURIComponent(
+          item.path
+        )}` +
+        `&ref=${encodeURIComponent(
+          currentBranch
+        )}`
       );
 
-      const base64 =
-        await fileToBase64(file);
+    let content = "";
 
-      const path =
-        currentPath
-          ? `${currentPath}/${file.name}`
-          : file.name;
+    if (data.content) {
 
-      /*
-       * Cek apakah file sudah ada.
-       */
+      try {
 
-      let existing = null;
-
-      try{
-
-        existing =
-          await api(
-            `/api/github/file?` +
-            new URLSearchParams({
-              owner:currentRepo.owner,
-              repo:currentRepo.repo,
-              path
-            })
+        content =
+          decodeURIComponent(
+            escape(
+              atob(
+                String(
+                  data.content
+                ).replace(
+                  /\s+/g,
+                  ""
+                )
+              )
+            )
           );
 
-      }catch{}
+      } catch {
+
+        content =
+          atob(
+            String(
+              data.content
+            ).replace(
+              /\s+/g,
+              ""
+            )
+          );
+      }
+    }
+
+    const ext =
+      getExtension(
+        item.name
+      );
+
+    if (
+      isImage(ext)
+    ) {
+
+      openPreviewModal(
+        item.name,
+        `<img
+          class="preview"
+          src="data:${mimeType(
+            ext
+          )};base64,${String(
+            data.content
+          ).replace(
+            /\s+/g,
+            ""
+          )}"
+        >`
+      );
+
+      return;
+    }
+
+    if (
+      isVideo(ext)
+    ) {
+
+      openPreviewModal(
+        item.name,
+        `<video
+          class="preview"
+          controls
+          src="data:${mimeType(
+            ext
+          )};base64,${String(
+            data.content
+          ).replace(
+            /\s+/g,
+            ""
+          )}"
+        ></video>`
+      );
+
+      return;
+    }
+
+    openPreviewModal(
+      item.name,
+      `<pre class="code">${escapeHtml(
+        content
+      )}</pre>`);
+
+} catch(error) {
+
+alert(
+  "Preview gagal: " +
+  error.message
+);
+
+} finally {
+
+hideLoading();
+
+}
+}
+
+function openPreviewModal(
+title,
+html
+) {
+
+modalTitle.textContent =
+"👁️ ${title}";
+
+modalContent.innerHTML =
+html;
+
+modalSubmit.classList.add(
+"hidden"
+);
+
+modal.classList.remove(
+"hidden"
+);
+}
+
+/* =========================
+EDIT
+========================= */
+
+async function editFile(
+item
+) {
+
+closeModal();
+
+showLoading(
+"Mengambil file..."
+);
+
+try {
+
+const data =
+  await api(
+    `/api/github/file` +
+    `?owner=${encodeURIComponent(
+      currentUser.login
+    )}` +
+    `&repo=${encodeURIComponent(
+      currentRepo
+    )}` +
+    `&path=${encodeURIComponent(
+      item.path
+    )}` +
+    `&ref=${encodeURIComponent(
+      currentBranch
+    )}`
+  );
+
+let content = "";
+
+try {
+
+  content =
+    decodeURIComponent(
+      escape(
+        atob(
+          String(
+            data.content
+          ).replace(
+            /\s+/g,
+            ""
+          )
+        )
+      )
+    );
+
+} catch {
+
+  content =
+    atob(
+      String(
+        data.content
+      ).replace(
+        /\s+/g,
+        ""
+      )
+    );
+}
+
+modalTitle.textContent =
+  `✍️ Edit ${item.name}`;
+
+modalContent.innerHTML =
+  `<textarea
+    id="editor"
+    rows="20"
+  >${escapeHtml(
+    content
+  )}</textarea>`;
+
+modalSubmit.textContent =
+  "💾 Save";
+
+modalSubmit.classList.remove(
+  "hidden"
+);
+
+modal.classList.remove(
+  "hidden"
+);
+
+modalSubmit.onclick =
+  async () => {
+
+    const value =
+      $("editor").value;
+
+    showLoading(
+      "Menyimpan..."
+    );
+
+    try {
 
       await api(
         "/api/github/upload",
         {
           method:"POST",
-          body:JSON.stringify({
-            owner:currentRepo.owner,
-            repo:currentRepo.repo,
-            path,
-            content:base64,
-            sha:existing?.sha || null,
-            message:
-              `${existing?.sha ? "Update" : "Upload"} ${file.name}`
-          })
+
+          body:
+            JSON.stringify({
+              owner:
+                currentUser.login,
+
+              repo:
+                currentRepo,
+
+              path:
+                item.path,
+
+              content:
+                btoa(
+                  unescape(
+                    encodeURIComponent(
+                      value
+                    )
+                  )
+                ),
+
+              sha:
+                item.sha,
+
+              branch:
+                currentBranch,
+
+              message:
+                `Update ${item.path}`
+            })
         }
       );
 
-      setStatus(
-        `${file.name} berhasil.`
+      closeModal();
+
+      await loadContents();
+
+    } catch(error) {
+
+      alert(
+        "Gagal menyimpan: " +
+        error.message
       );
 
-    }catch(error){
+    } finally {
 
-      setStatus(
-        `${file.name}: ${error.message}`
-      );
-
+      hideLoading();
     }
+  };
 
-  }
+} catch(error) {
 
-  document
-    .getElementById("uploadInput")
-    .value = "";
+alert(
+  "Gagal membuka file: " +
+  error.message
+);
 
-  await loadFiles();
+} finally {
 
-}
-
-function fileToBase64(file){
-
-  return new Promise(
-    (resolve,reject)=>{
-
-      const reader =
-        new FileReader();
-
-      reader.onload = () =>
-        resolve(reader.result);
-
-      reader.onerror = reject;
-
-      reader.readAsDataURL(file);
-
-    }
-  );
+hideLoading();
 
 }
-
-
-/* =========================================================
-   RENAME
-========================================================= */
-
-async function renameItem(
-  oldPath,
-  oldName
-){
-
-  const newName =
-    prompt(
-      "Nama baru:",
-      oldName
-    );
-
-  if(!newName || newName === oldName)
-    return;
-
-  let newPath;
-
-  if(currentPath){
-
-    newPath =
-      `${currentPath}/${newName}`;
-
-  }else{
-
-    newPath = newName;
-
-  }
-
-  setStatus(
-    "Rename",
-    true
-  );
-
-  try{
-
-    await api(
-      "/api/github/rename",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          owner:currentRepo.owner,
-          repo:currentRepo.repo,
-          oldPath,
-          newPath
-        })
-      }
-    );
-
-    setStatus(
-      "Rename berhasil."
-    );
-
-    await loadFiles();
-
-  }catch(error){
-
-    setStatus(
-      error.message
-    );
-
-  }
-
 }
 
+/* =========================
+RENAME
+========================= */
 
-/* =========================================================
-   DELETE
-========================================================= */
+window.renameFile =
+async function(item) {
 
-async function deleteItem(
-  path,
-  name,
-  sha
-){
+closeModal();
 
-  if(
-    !confirm(
-      `Hapus "${name}"?`
-    )
-  ) return;
+modalTitle.textContent =
+  "✏️ Rename";
 
-  /*
-   * Hilangkan dari UI terlebih dahulu
-   */
+modalContent.innerHTML =
+  `
+    <div class="form-group">
 
-  const element =
-    document.querySelector(
-      `[data-path="${CSS.escape(path)}"]`
+      <label>Nama baru</label>
+
+      <input
+        id="newName"
+        value="${escapeAttr(
+          item.name
+        )}"
+      >
+
+    </div>
+  `;
+
+modalSubmit.textContent =
+  "Rename";
+
+modalSubmit.classList.remove(
+  "hidden"
+);
+
+modal.classList.remove(
+  "hidden"
+);
+
+modalSubmit.onclick =
+  async () => {
+
+    const name =
+      $("newName").value.trim();
+
+    if (!name) return;
+
+    const parent =
+      currentPath
+        ? currentPath + "/"
+        : "";
+
+    const newPath =
+      parent + name;
+
+    showLoading(
+      "Rename..."
     );
 
-  if(element){
-    element.remove();
-  }
+    try {
 
-  setStatus(
-    "Delete",
-    true
-  );
-
-  try{
-
-    await api(
-      "/api/github/delete",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          owner:currentRepo.owner,
-          repo:currentRepo.repo,
-          path,
-          sha
-        })
-      }
-    );
-
-    currentFiles =
-      currentFiles.filter(
-        x => x.path !== path
-      );
-
-    setStatus(
-      "File berhasil dihapus."
-    );
-
-    renderFiles();
-
-  }catch(error){
-
-    setStatus(
-      error.message
-    );
-
-    await loadFiles();
-
-  }
-
-}
-
-
-/* =========================================================
-   DOWNLOAD
-========================================================= */
-
-function downloadFile(
-  url,
-  name
-){
-
-  if(!url){
-
-    setStatus(
-      "Download URL tidak tersedia."
-    );
-
-    return;
-  }
-
-  const a =
-    document.createElement("a");
-
-  a.href = url;
-  a.download = name;
-  a.target = "_blank";
-  a.rel = "noopener";
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  a.remove();
-
-}
-
-
-/* =========================================================
-   PREVIEW
-========================================================= */
-
-async function previewFile(
-  path,
-  name
-){
-
-  setStatus(
-    "Membuka preview",
-    true
-  );
-
-  try{
-
-    const data =
       await api(
-        `/api/github/file?` +
-        new URLSearchParams({
-          owner:currentRepo.owner,
-          repo:currentRepo.repo,
-          path
-        })
-      );
-
-    const ext =
-      name
-        .split(".")
-        .pop()
-        .toLowerCase();
-
-    const imageExt =
-      [
-        "jpg",
-        "jpeg",
-        "png",
-        "gif",
-        "webp",
-        "bmp",
-        "svg"
-      ];
-
-    const videoExt =
-      [
-        "mp4",
-        "webm",
-        "ogg",
-        "mov"
-      ];
-
-    if(
-      imageExt.includes(ext)
-    ){
-
-      openModal(
-        `👁️ ${name}`,
-        `
-        <div class="preview">
-          <img
-            src="data:image/${ext === "jpg" ? "jpeg" : ext};base64,${data.content.replace(/\n/g,"")}"
-          >
-        </div>
-        `
-      );
-
-    }else if(
-      videoExt.includes(ext)
-    ){
-
-      const mime =
-        ext === "mp4"
-          ? "video/mp4"
-          : ext === "webm"
-            ? "video/webm"
-            : "video/ogg";
-
-      openModal(
-        `🎬 ${name}`,
-        `
-        <div class="preview">
-          <video
-            controls
-            playsinline
-            src="data:${mime};base64,${data.content.replace(/\n/g,"")}"
-          ></video>
-        </div>
-        `
-      );
-
-    }else{
-
-      const binary =
-        atob(
-          data.content
-            .replace(/\n/g,"")
-        );
-
-      const bytes =
-        Uint8Array.from(
-          binary,
-          c => c.charCodeAt(0)
-        );
-
-      let text;
-
-      try{
-
-        text =
-          new TextDecoder(
-            "utf-8"
-          ).decode(bytes);
-
-      }catch{
-
-        text =
-          "[File binary tidak dapat ditampilkan sebagai teks]";
-
-      }
-
-      openModal(
-        `👁️ ${name}`,
-        `
-        <div class="preview">
-          <pre>${escapeHtml(text)}</pre>
-        </div>
-        `
-      );
-
-    }
-
-  }catch(error){
-
-    setStatus(
-      error.message
-    );
-
-  }finally{
-
-    clearStatus();
-
-  }
-
-}
-
-
-/* =========================================================
-   EDIT
-========================================================= */
-
-async function editFile(
-  path,
-  name
-){
-
-  setStatus(
-    "Membuka editor",
-    true
-  );
-
-  try{
-
-    const data =
-      await api(
-        `/api/github/file?` +
-        new URLSearchParams({
-          owner:currentRepo.owner,
-          repo:currentRepo.repo,
-          path
-        })
-      );
-
-    const binary =
-      atob(
-        data.content
-          .replace(/\n/g,"")
-      );
-
-    const bytes =
-      Uint8Array.from(
-        binary,
-        c => c.charCodeAt(0)
-      );
-
-    let text;
-
-    try{
-
-      text =
-        new TextDecoder(
-          "utf-8"
-        ).decode(bytes);
-
-    }catch{
-
-      throw new Error(
-        "File binary tidak cocok untuk editor teks."
-      );
-
-    }
-
-    openModal(
-      `✍️ Edit ${name}`,
-      `
-      <textarea id="editor">${escapeHtml(text)}</textarea>
-
-      <div style="height:10px"></div>
-
-      <div class="row wrap">
-
-        <button
-          class="btn primary"
-          onclick="saveEditedFile('${escapeAttr(path)}','${escapeAttr(name)}','${escapeAttr(data.sha)}')"
-        >
-          💾 Simpan
-        </button>
-
-        <button
-          class="btn"
-          onclick="closeModal()"
-        >
-          Batal
-        </button>
-
-      </div>
-      `
-    );
-
-  }catch(error){
-
-    setStatus(
-      error.message
-    );
-
-  }finally{
-
-    clearStatus();
-
-  }
-
-}
-
-async function saveEditedFile(
-  path,
-  name,
-  sha
-){
-
-  const editor =
-    document.getElementById(
-      "editor"
-    );
-
-  if(!editor) return;
-
-  setStatus(
-    "Menyimpan",
-    true
-  );
-
-  try{
-
-    const encoded =
-      new TextEncoder()
-        .encode(editor.value);
-
-    let binary = "";
-
-    for(
-      let i=0;
-      i<encoded.length;
-      i++
-    ){
-      binary +=
-        String.fromCharCode(
-          encoded[i]
-        );
-    }
-
-    const base64 =
-      btoa(binary);
-
-    await api(
-      "/api/github/upload",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          owner:currentRepo.owner,
-          repo:currentRepo.repo,
-          path,
-          content:base64,
-          sha,
-          message:
-            `Edit ${name}`
-        })
-      }
-    );
-
-    closeModal();
-
-    setStatus(
-      "File berhasil disimpan."
-    );
-
-    await loadFiles();
-
-  }catch(error){
-
-    setStatus(
-      error.message
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   CREATE FOLDER
-========================================================= */
-
-async function createFolder(){
-
-  const name =
-    prompt(
-      "Nama folder:"
-    );
-
-  if(!name) return;
-
-  const path =
-    currentPath
-      ? `${currentPath}/${name}/.gitkeep`
-      : `${name}/.gitkeep`;
-
-  setStatus(
-    "Membuat folder",
-    true
-  );
-
-  try{
-
-    await api(
-      "/api/github/upload",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          owner:currentRepo.owner,
-          repo:currentRepo.repo,
-          path,
-          content:"",
-          message:
-            `Create folder ${name}`
-        })
-      }
-    );
-
-    setStatus(
-      "Folder berhasil dibuat."
-    );
-
-    await loadFiles();
-
-  }catch(error){
-
-    setStatus(
-      error.message
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   CREATE REPOSITORY
-========================================================= */
-
-async function createRepository(){
-
-  const name =
-    prompt(
-      "Nama repository:"
-    );
-
-  if(!name) return;
-
-  const description =
-    prompt(
-      "Deskripsi (opsional):",
-      ""
-    ) || "";
-
-  const privateRepo =
-    confirm(
-      "Jadikan Private?"
-    );
-
-  setStatus(
-    "Membuat repository",
-    true
-  );
-
-  try{
-
-    const repo =
-      await api(
-        "/api/github/repos",
+        "/api/github/rename",
         {
           method:"POST",
-          body:JSON.stringify({
-            name,
-            description,
-            private:privateRepo
-          })
+
+          body:
+            JSON.stringify({
+              owner:
+                currentUser.login,
+
+              repo:
+                currentRepo,
+
+              oldPath:
+                item.path,
+
+              newPath,
+
+              branch:
+                currentBranch
+            })
         }
       );
 
-    repositories.unshift(repo);
+      closeModal();
 
-    renderRepos();
+      await loadContents();
 
-    setStatus(
-      "Repository berhasil dibuat."
-    );
+    } catch(error) {
 
-  }catch(error){
+      alert(
+        "Rename gagal: " +
+        error.message
+      );
 
-    setStatus(
-      error.message
-    );
+    } finally {
 
-  }
+      hideLoading();
+    }
+  };
 
+};
+
+/* =========================
+DELETE
+========================= */
+
+window.deleteFile =
+async function(item) {
+
+closeModal();
+
+if (
+  !confirm(
+    `Hapus "${item.name}"?`
+  )
+) {
+  return;
 }
 
+showLoading(
+  "Menghapus..."
+);
 
-/* =========================================================
-   CURRENT
-========================================================= */
+try {
 
-async function loadCurrent(){
+  await api(
+    "/api/github/delete",
+    {
+      method:"POST",
 
-  if(currentRepo){
+      body:
+        JSON.stringify({
+          owner:
+            currentUser.login,
 
-    await loadFiles();
+          repo:
+            currentRepo,
 
-  }else{
+          path:
+            item.path,
 
-    await loadRepos();
+          sha:
+            item.sha,
 
-  }
-
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-function openModal(
-  title,
-  html
-){
-
-  document
-    .getElementById("modalTitle")
-    .textContent = title;
-
-  document
-    .getElementById("modalBody")
-    .innerHTML = html;
-
-  document
-    .getElementById("modal")
-    .classList.remove("hidden");
-
-}
-
-function closeModal(){
-
-  document
-    .getElementById("modal")
-    .classList.add("hidden");
-
-  document
-    .getElementById("modalBody")
-    .innerHTML = "";
-
-}
-
-document
-  .getElementById("modal")
-  .addEventListener(
-    "click",
-    e => {
-
-      if(
-        e.target.id === "modal"
-      ){
-        closeModal();
-      }
-
+          branch:
+            currentBranch
+        })
     }
   );
 
+  /*
+   * Hilangkan langsung dari UI
+   */
 
-/* =========================================================
-   HELPERS
-========================================================= */
+  currentItems =
+    currentItems.filter(
+      x =>
+        x.path !== item.path
+    );
 
-function escapeHtml(value){
+  renderFiles(
+    currentItems
+  );
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  await loadContents();
 
+} catch(error) {
+
+  alert(
+    "Delete gagal: " +
+    error.message
+  );
+
+} finally {
+
+  hideLoading();
 }
 
-function escapeAttr(value){
+};
 
-  return escapeHtml(value)
-    .replaceAll("\\","\\\\");
+/* =========================
+DOWNLOAD
+========================= */
+
+window.downloadFile =
+function(item) {
+
+closeModal();
+
+const url =
+  API_BASE +
+  `/api/github/download` +
+  `?owner=${encodeURIComponent(
+    currentUser.login
+  )}` +
+  `&repo=${encodeURIComponent(
+    currentRepo
+  )}` +
+  `&path=${encodeURIComponent(
+    item.path
+  )}`;
+
+window.open(
+  url,
+  "_blank"
+);
+
+};
+
+/* =========================
+UPLOAD
+========================= */
+
+$("uploadButton")
+.addEventListener(
+"click",
+() => {
+
+  const input =
+    document.createElement(
+      "input"
+    );
+
+  input.type =
+    "file";
+
+  input.multiple =
+    true;
+
+  input.onchange =
+    async () => {
+
+      const files =
+        [...input.files];
+
+      for (
+        const file of files
+      ) {
+
+        await uploadFile(
+          file
+        );
+      }
+
+      await loadContents();
+    };
+
+  input.click();
 }
 
-function formatBytes(bytes){
+);
 
-  if(!bytes) return "0 B";
+async function uploadFile(
+file
+) {
 
-  const units =
-    [
-      "B",
-      "KB",
-      "MB",
-      "GB"
-    ];
+showLoading(
+"Upload ${file.name}..."
+);
 
-  let i=0;
-  let n=Number(bytes);
+try {
 
-  while(
-    n >= 1024 &&
-    i < units.length-1
-  ){
+const base64 =
+  await fileToBase64(
+    file
+  );
 
-    n /= 1024;
-    i++;
+const path =
+  joinPath(
+    currentPath,
+    file.name
+  );
 
+const existing =
+  currentItems.find(
+    x =>
+      x.path === path
+  );
+
+await api(
+  "/api/github/upload",
+  {
+    method:"POST",
+
+    body:
+      JSON.stringify({
+        owner:
+          currentUser.login,
+
+        repo:
+          currentRepo,
+
+        path,
+
+        content:
+          base64,
+
+        sha:
+          existing?.sha,
+
+        branch:
+          currentBranch,
+
+        message:
+          existing
+            ? `Update ${path}`
+            : `Upload ${path}`
+      })
   }
+);
 
-  return (
-    n < 10 && i > 0
-      ? n.toFixed(1)
-      : Math.round(n)
-  ) +
-  " " +
-  units[i];
+} catch(error) {
 
-}
+alert(
+  `Upload ${file.name} gagal: ` +
+  error.message
+);
 
-function getFileIcon(name){
+} finally {
 
-  const ext =
-    name
-      .split(".")
-      .pop()
-      .toLowerCase();
-
-  if(
-    [
-      "jpg",
-      "jpeg",
-      "png",
-      "gif",
-      "webp",
-      "svg"
-    ].includes(ext)
-  ) return "🖼️";
-
-  if(
-    [
-      "mp4",
-      "webm",
-      "mov",
-      "avi",
-      "mkv"
-    ].includes(ext)
-  ) return "🎬";
-
-  if(
-    [
-      "mp3",
-      "wav",
-      "ogg",
-      "m4a"
-    ].includes(ext)
-  ) return "🎵";
-
-  if(
-    [
-      "zip",
-      "rar",
-      "7z",
-      "tar",
-      "gz"
-    ].includes(ext)
-  ) return "📦";
-
-  if(
-    [
-      "js",
-      "ts",
-      "jsx",
-      "tsx",
-      "py",
-      "php",
-      "java",
-      "c",
-      "cpp",
-      "css",
-      "html",
-      "json",
-      "xml",
-      "md",
-      "txt"
-    ].includes(ext)
-  ) return "📄";
-
-  return "📄";
+hideLoading();
 
 }
+}
 
+function fileToBase64(
+file
+) {
 
-/* =========================================================
-   START
-========================================================= */
+return new Promise(
+(resolve,reject) => {
+
+  const reader =
+    new FileReader();
+
+  reader.onload =
+    () => {
+
+      const result =
+        String(
+          reader.result
+        );
+
+      const comma =
+        result.indexOf(",");
+
+      resolve(
+        comma === -1
+          ? result
+          : result.slice(
+              comma + 1
+            )
+      );
+    };
+
+  reader.onerror =
+    reject;
+
+  reader.readAsDataURL(
+    file
+  );
+}
+
+);
+}
+
+/* =========================
+FOLDER
+========================= */
+
+$("folderButton")
+.addEventListener(
+"click",
+() => {
+
+  modalTitle.textContent =
+    "📁 Buat Folder";
+
+  modalContent.innerHTML =
+    `
+      <div class="form-group">
+
+        <label>Nama folder</label>
+
+        <input
+          id="folderName"
+          placeholder="contoh: uploads"
+        >
+
+      </div>
+    `;
+
+  modalSubmit.textContent =
+    "Buat";
+
+  modalSubmit.classList.remove(
+    "hidden"
+  );
+
+  modal.classList.remove(
+    "hidden"
+  );
+
+  modalSubmit.onclick =
+    async () => {
+
+      const folder =
+        $("folderName")
+          .value
+          .trim();
+
+      if (!folder) return;
+
+      const fullPath =
+        joinPath(
+          currentPath,
+          folder
+        );
+
+      showLoading(
+        "Membuat folder..."
+      );
+
+      try {
+
+        await api(
+          "/api/github/folder",
+          {
+            method:"POST",
+
+            body:
+              JSON.stringify({
+                owner:
+                  currentUser.login,
+
+                repo:
+                  currentRepo,
+
+                folder:
+                  fullPath,
+
+                branch:
+                  currentBranch
+              })
+          }
+        );
+
+        closeModal();
+
+        await loadContents();
+
+      } catch(error) {
+
+        alert(
+          "Gagal membuat folder: " +
+          error.message
+        );
+
+      } finally {
+
+        hideLoading();
+      }
+    };
+}
+
+);
+
+/* =========================
+ADD REPOSITORY
+========================= */
+
+$("addRepo")
+.addEventListener(
+"click",
+() => {
+
+  modalTitle.textContent =
+    "➕ Add Repository";
+
+  modalContent.innerHTML =
+    `
+      <div class="form-group">
+
+        <label>Nama Repository</label>
+
+        <input
+          id="repoName"
+          placeholder="Nama repository"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Deskripsi</label>
+
+        <textarea
+          id="repoDescription"
+          rows="4"
+          placeholder="Deskripsi"
+        ></textarea>
+
+      </div>
+
+      <label style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+      ">
+
+        <input
+          id="repoPrivate"
+          type="checkbox"
+          style="width:auto"
+        >
+
+        Private repository
+
+      </label>
+    `;
+
+  modalSubmit.textContent =
+    "Create";
+
+  modalSubmit.classList.remove(
+    "hidden"
+  );
+
+  modal.classList.remove(
+    "hidden"
+  );
+
+  modalSubmit.onclick =
+    async () => {
+
+      const name =
+        $("repoName")
+          .value
+          .trim();
+
+      const description =
+        $("repoDescription")
+          .value
+          .trim();
+
+      const privateRepo =
+        $("repoPrivate")
+          .checked;
+
+      if (!name) {
+
+        alert(
+          "Nama repository wajib."
+        );
+
+        return;
+      }
+
+      showLoading(
+        "Membuat repository..."
+      );
+
+      try {
+
+        await api(
+          "/api/github/repos",
+          {
+            method:"POST",
+
+            body:
+              JSON.stringify({
+                name,
+                description,
+                private:
+                  privateRepo
+              })
+          }
+        );
+
+        closeModal();
+
+        await loadRepos();
+
+      } catch(error) {
+
+        alert(
+          "Gagal membuat repository: " +
+          error.message
+        );
+
+      } finally {
+
+        hideLoading();
+      }
+    };
+}
+
+);
+
+/* =========================
+SEARCH REPO
+========================= */
+
+$("searchRepo")
+.addEventListener(
+"click",
+async () => {
+
+  modalTitle.textContent =
+    "🔍 Search Repository";
+
+  modalContent.innerHTML =
+    `
+      <div class="form-group">
+
+        <label>Kata pencarian</label>
+
+        <input
+          id="repoSearch"
+          placeholder="contoh: bot"
+        >
+
+      </div>
+    `;
+
+  modalSubmit.textContent =
+    "Search";
+
+  modalSubmit.classList.remove(
+    "hidden"
+  );
+
+  modal.classList.remove(
+    "hidden"
+  );
+
+  modalSubmit.onclick =
+    async () => {
+
+      const q =
+        $("repoSearch")
+          .value
+          .trim();
+
+      if (!q) return;
+
+      closeModal();
+
+      showLoading(
+        "Mencari..."
+      );
+
+      try {
+
+        const result =
+          await api(
+            `/api/github/search?q=${encodeURIComponent(
+              q
+            )}`
+          );
+
+        renderRepos(
+          result.items || []
+        );
+
+      } catch(error) {
+
+        alert(
+          "Search gagal: " +
+          error.message
+        );
+
+      } finally {
+
+        hideLoading();
+      }
+    };
+}
+
+);
+
+/* =========================
+SEARCH FILE
+========================= */
+
+$("searchFileButton")
+.addEventListener(
+"click",
+() => {
+
+  modalTitle.textContent =
+    "🔍 Search File";
+
+  modalContent.innerHTML =
+    `
+      <div class="form-group">
+
+        <label>Nama file</label>
+
+        <input
+          id="fileSearch"
+          placeholder="contoh: index.js"
+        >
+
+      </div>
+    `;
+
+  modalSubmit.textContent =
+    "Search";
+
+  modalSubmit.classList.remove(
+    "hidden"
+  );
+
+  modal.classList.remove(
+    "hidden"
+  );
+
+  modalSubmit.onclick =
+    async () => {
+
+      const q =
+        $("fileSearch")
+          .value
+          .trim();
+
+      if (!q) return;
+
+      closeModal();
+
+      showLoading(
+        "Mencari file..."
+      );
+
+      try {
+
+        const result =
+          await api(
+            `/api/github/search-files` +
+            `?owner=${encodeURIComponent(
+              currentUser.login
+            )}` +
+            `&repo=${encodeURIComponent(
+              currentRepo
+            )}` +
+            `&q=${encodeURIComponent(
+              q
+            )}`
+          );
+
+        const items =
+          result.items || [];
+
+        modalTitle.textContent =
+          `🔍 Hasil: ${q}`;
+
+        modalContent.innerHTML =
+          items.length
+            ? items.map(
+                x =>
+                  `<div style="
+                    padding:10px;
+                    border-bottom:1px solid #303644;
+                  ">
+                    📄 ${escapeHtml(
+                      x.path
+                    )}
+                  </div>`
+              ).join("")
+            : "Tidak ditemukan.";
+
+        modalSubmit.classList.add(
+          "hidden"
+        );
+
+        modal.classList.remove(
+          "hidden"
+        );
+
+      } catch(error) {
+
+        alert(
+          "Search gagal: " +
+          error.message
+        );
+
+      } finally {
+
+        hideLoading();
+      }
+    };
+}
+
+);
+
+/* =========================
+NAVIGATION
+========================= */
+
+$("backRepos")
+.addEventListener(
+"click",
+() => {
+
+  currentRepo =
+    null;
+
+  currentPath =
+    "";
+
+  fileView.classList.add(
+    "hidden"
+  );
+
+  repoView.classList.remove(
+    "hidden"
+  );
+
+  loadRepos();
+}
+
+);
+
+$("refreshRepos")
+.addEventListener(
+"click",
+loadRepos
+);
+
+/* =========================
+LOGOUT
+========================= */
+
+$("logoutButton")
+.addEventListener(
+"click",
+logout
+);
+
+async function logout() {
+
+showLoading(
+"Logout..."
+);
+
+try {
+
+await api(
+  "/api/logout",
+  {
+    method:"POST"
+  }
+);
+
+} catch {}
+
+currentUser =
+null;
+
+currentRepo =
+null;
+
+currentPath =
+"";
+
+fileView.classList.add(
+"hidden"
+);
+
+repoView.classList.remove(
+"hidden"
+);
+
+hideLoading();
+
+showLogin();
+}
+
+/* =========================
+MODAL
+========================= */
+
+function closeModal() {
+
+modal.classList.add(
+"hidden"
+);
+
+modalSubmit.onclick =
+null;
+
+modalSubmit.classList.remove(
+"hidden"
+);
+
+modalSubmit.textContent =
+"Simpan";
+}
+
+modalCancel.addEventListener(
+"click",
+closeModal
+);
+
+modal.addEventListener(
+"click",
+event => {
+
+if (
+  event.target === modal
+) {
+  closeModal();
+}
+
+}
+);
+
+/* =========================
+HELPERS
+========================= */
+
+function escapeHtml(value) {
+
+return String(
+value ?? ""
+)
+.replace(
+/&/g,
+"&"
+)
+.replace(
+/</g,
+"<"
+)
+.replace(
+/>/g,
+">"
+)
+.replace(
+/"/g,
+"""
+)
+.replace(
+/'/g,
+"'"
+);
+}
+
+function escapeAttr(value) {
+return escapeHtml(value);
+}
+
+function joinPath(
+a,
+b
+) {
+
+if (!a) return b;
+
+return (
+a.replace(
+//+$/,
+""
+) +
+"/" +
+b.replace(
+/^/+/,
+""
+)
+);
+}
+
+function getExtension(
+filename
+) {
+
+const parts =
+filename
+.split(".");
+
+return parts.length > 1
+? parts.pop().toLowerCase()
+: "";
+}
+
+function isImage(ext) {
+
+return [
+"png",
+"jpg",
+"jpeg",
+"gif",
+"webp",
+"bmp",
+"svg"
+].includes(ext);
+}
+
+function isVideo(ext) {
+
+return [
+"mp4",
+"webm",
+"ogg",
+"mov"
+].includes(ext);
+}
+
+function mimeType(ext) {
+
+const map = {
+png:"image/png",
+jpg:"image/jpeg",
+jpeg:"image/jpeg",
+gif:"image/gif",
+webp:"image/webp",
+bmp:"image/bmp",
+svg:"image/svg+xml",
+
+mp4:"video/mp4",
+webm:"video/webm",
+ogg:"video/ogg",
+mov:"video/quicktime"
+
+};
+
+return (
+map[ext] ||
+"application/octet-stream"
+);
+}
+
+function getFileIcon(
+name
+) {
+
+const ext =
+getExtension(name);
+
+if (isImage(ext))
+return "🖼️";
+
+if (isVideo(ext))
+return "🎬";
+
+if (
+[
+"js",
+"ts",
+"jsx",
+"tsx"
+].includes(ext)
+)
+return "📜";
+
+if (
+[
+"html",
+"css"
+].includes(ext)
+)
+return "🌐";
+
+if (
+[
+"json",
+"xml",
+"yaml",
+"yml"
+].includes(ext)
+)
+return "📋";
+
+if (
+[
+"zip",
+"rar",
+"7z"
+].includes(ext)
+)
+return "📦";
+
+return "📄";
+}
+
+/* =========================
+START
+========================= */
 
 checkSession();
 
-</script>
-
-</body>
+</script></body>
 </html>
